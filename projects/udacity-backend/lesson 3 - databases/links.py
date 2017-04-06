@@ -181,3 +181,13 @@ def link_by_id(link_id):
             return i
     
 #print link_by_id(7)
+
+# QUIZ - implement the function build_link_index() that creates a python dictionary
+# the maps a link's ID to the link itself
+def build_link_index():
+    linkDict = {}
+    for i in links:
+        linkDict[i.id] = i
+    return linkDict
+    
+print build_link_index()
