@@ -94,7 +94,7 @@ def query():
         if i.id == 15:
             return i.votes
 
-print query()
+#print query()
 
 # links is a list of Link objects. Links have a handful of properties. For
 # example, a Link's number of votes can be accessed by link.votes if "link" is a
@@ -109,7 +109,7 @@ def query2():
             linkList.append(link)
     return sorted(linkList, key=lambda x: x.submitted_time)
 
-print query2()
+#print query2()
 
 # make and populate a table
 db = sqlite3.connect(':memory:')
@@ -139,10 +139,18 @@ for l in links:
 #     print link.votes
 #
 # QUIZ - make the function query() return the number of votes the link with ID = 2 has
-def query():
+def query3():
     c = db.execute("select * from links where id = 2")
-
     link = Link(*c.fetchone())
     return link.votes
 
-print query()
+#print query3()
+
+# QUIZ - make the function query() return the ID of the link that was 
+# submitted by user 62443 and has > 1000 votes. 
+def query4():
+    c = db.execute("select * from links where submitter_id = 62443 and votes > 1000")
+    link = Link(*c.fetchone())
+    return link.id
+
+print query4()
