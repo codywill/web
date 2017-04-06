@@ -157,11 +157,18 @@ def query4():
 
 # QUIZ - make the function query() return a list of the IDs of the links 
 # that were submitted by user 62443 sorted by submission time ascending. 
-def query5():
+def query5a():
     linkList = []
     c = db.execute("select * from links where submitter_id = 62443 order by submitted_time")
     for link_tuple in c:
         linkList.append(Link(*link_tuple).id)
     return linkList
 
-print query5()
+#print query5a()
+
+# Heavily reduced version
+def query5b():
+    c = db.execute("select id from links where submitter_id = 62443 order by submitted_time")
+    return [t[0] for t in c]
+
+print query5b()
