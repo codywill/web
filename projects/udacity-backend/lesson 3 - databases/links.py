@@ -175,10 +175,10 @@ def query5b():
 
 # QUIZ - implement the function link_by_id() that takes a link's ID and returns
 # the Link object itself
-def link_by_id(link_id):
-    for i in links:
-        if i.id == link_id:
-            return i
+#def link_by_id(link_id):
+#    for i in links:
+#        if i.id == link_id:
+#            return i
     
 #print link_by_id(7)
 
@@ -190,4 +190,10 @@ def build_link_index():
         linkDict[i.id] = i
     return linkDict
     
-print build_link_index()
+#print build_link_index()
+
+link_index = build_link_index()
+
+def link_by_id(link_id):
+   return link_index.get(link_id)
+   
