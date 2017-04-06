@@ -202,3 +202,4 @@ def link_by_id(link_id):
 def add_new_link(link):
     links.append(link)
     link_index[link.id] = link
+
