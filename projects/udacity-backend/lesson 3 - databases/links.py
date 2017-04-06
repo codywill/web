@@ -1,4 +1,5 @@
 from collections import namedtuple
+import sqlite3
 
 # make a basic link class
 Link = namedtuple('Link', ['id', 'submitter_id', 'submitted_time', 'votes', 'title', 'url'])
@@ -109,3 +110,39 @@ def query2():
     return sorted(linkList, key=lambda x: x.submitted_time)
 
 print query2()
+
+# make and populate a table
+db = sqlite3.connect(':memory:')
+db.execute('create table links ' +
+          '(id integer, submitter_id integer, submitted_time integer, ' +
+          'votes integer, title text, url text)')
+for l in links:
+    db.execute('insert into links values (?, ?, ?, ?, ?, ?)', l)
+
+# db is an in-memory sqlite database that can respond to sql queries using the
+# execute() function.
+#
+# For example. If you run
+#
+# c = db.execute("select * from links")
+#
+# c will be a "cursor" to the results of that query. You can use the fetchmany()
+# function on the cursor to convert that cursor into a list of results. These
+# results won't be Links; they'll be tuples, but they can be passed turned into
+# a Link.
+#
+# For example, to print all the votes for all of the links, do this:
+#
+# c = db.execute("select * from links")
+# for link_tuple in c:
+#     link = Link(*link_tuple)
+#     print link.votes
+#
+# QUIZ - make the function query() return the number of votes the link with ID = 2 has
+def query():
+    c = db.execute("select * from links where id = 2")
+
+    link = Link(*c.fetchone())
+    return link.votes
+
+print query()
