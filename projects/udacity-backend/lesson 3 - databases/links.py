@@ -171,4 +171,13 @@ def query5b():
     c = db.execute("select id from links where submitter_id = 62443 order by submitted_time")
     return [t[0] for t in c]
 
-print query5b()
+#print query5b()
+
+# QUIZ - implement the function link_by_id() that takes a link's ID and returns
+# the Link object itself
+def link_by_id(link_id):
+    for i in links:
+        if i.id == link_id:
+            return i
+    
+#print link_by_id(7)
