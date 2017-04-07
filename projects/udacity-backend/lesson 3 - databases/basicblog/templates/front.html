@@ -6,7 +6,7 @@
     </head>
     <style type="text/css">
         body {
-            font-family: sans-sarif;
+            font-family: Helvetica, Arial, sans-serif;
             width: 800px;
             margin: 0 auto;
             padding: 10px;
@@ -45,24 +45,37 @@
             margin-top: 20px;
         }
         
+        .content-heading {
+            position: relative;
+            border-bottom: 3px solid #666
+        } 
+        
         .content-subject {
+            position: relative;
             font-weight: bold;
             font-size: 20px;
         }
         
         .content-body {
-            margin: 0;
-            font-size: 17px;
+            margin-top: 5px;
+        }
+        
+        .content-date {
+            position: absolute;
+            right: 0px;
+            bottom: 0px;
+            color: #999;
         }
     </style>
     <body>
         <h1>/bleg/</h1>
         <hr>
         {% for c in content %}
-            <div class="content">
-                <div class="content-subject">{{c.subject}} | {{c.created}}</div>
-                <pre class="content-body">{{c.content}}</div>
+            <div class="content-heading">
+                <div class="content-subject">{{c.subject}}</div>
+                <div class="content-date">{{c.created.strftime("%b %d, %Y")}}</div>
             </div>
+                <div class="content-body">{{c.content}}</div>
         {% endfor %}
         </hr>        
     </body>

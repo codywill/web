@@ -22,7 +22,7 @@ class Handler(webapp2.RequestHandler):
 class Content(db.Model):
     subject = db.StringProperty(required=True)
     content = db.TextProperty(required=True)
-    created = db.DateProperty(auto_now_add=True)
+    created = db.DateTimeProperty(auto_now_add=True)
 
 class MainPage(Handler):
     def render_front(self, subject="", content="", error=""):
