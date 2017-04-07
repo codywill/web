@@ -1,82 +1,14 @@
-<!DOCTYPE html>
+{% extends "base.html" %}
+{% block content %}
 
-<html>
-    <head>
-        <title>/bleg/</title>
-    </head>
-    <style type="text/css">
-        body {
-            font-family: Helvetica, Arial, sans-serif;
-            width: 800px;
-            margin: 0 auto;
-            padding: 10px;
-        }
-        .error {
-            color: red
-        }
-        
-        label {
-            display: black;
-            font-size: 20px;
-        }
-        
-        input[type=text] {
-            width: 400px;
-            font-size: 20px;
-            padding: 2px;
-        }
-        
-        textarea {
-            width: 400px;
-            height: 200px;
-            font-size: 17px;
-            font-family: monospace;
-        }
-        
-        input[type=submit] {
-            font-size: 24px;
-        }
-        
-        hr {
-            margin: 20px auto;
-        }
-        
-        .content + .content {
-            margin-top: 20px;
-        }
-        
-        .content-heading {
-            position: relative;
-            border-bottom: 3px solid #666
-        } 
-        
-        .content-subject {
-            position: relative;
-            font-weight: bold;
-            font-size: 20px;
-        }
-        
-        .content-body {
-            margin-top: 5px;
-        }
-        
-        .content-date {
-            position: absolute;
-            right: 0px;
-            bottom: 0px;
-            color: #999;
-        }
-    </style>
-    <body>
-        <h1>/bleg/</h1>
-        <hr>
-        {% for c in content %}
-            <div class="content-heading">
-                <div class="content-subject">{{c.subject}}</div>
-                <div class="content-date">{{c.created.strftime("%b %d, %Y")}}</div>
-            </div>
-                <div class="content-body">{{c.content}}</div>
-        {% endfor %}
-        </hr>        
-    </body>
-</html>
+<a href="/newpost" class="main-title">/bleg/</a>
+<hr>
+{% for c in content %}
+    <div class="content-heading">
+        <div class="content-subject">{{c.subject}}</div>
+        <div class="content-date">{{c.created.strftime("%b %d, %Y")}}</div>
+    </div>
+        <div class="content-body">{{c.content}}</div>
+{% endfor %}
+
+{% endblock %}
