@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<a href="/" class="main-title">/bleg/</a>
+
+<form method="post">
+    <div class="submission">
+    <label>
+        <div>subject</div>
+        <input class="submission" type="text" name="subject" value="{{subject}}">
+    </label>
+    
+    <label>
+        <div>content</div>
+        <textarea name="content">{{content}}</textarea>
+    </label>
+    </div>
+    <div class="error">{{error}}</div>
+    
+    <input type="submit">
+</form>
+{% endblock %}
