@@ -3,6 +3,8 @@ import webapp2
 import jinja2
 import hashlib
 
+SECRET = 'secretkey'
+
 from google.appengine.ext import db
 
 template_dir = os.path.join(os.path.dirname(__file__), 'templates')
