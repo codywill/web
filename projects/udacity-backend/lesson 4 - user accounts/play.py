@@ -2,6 +2,7 @@ import os
 import webapp2
 import jinja2
 import hashlib
+import hmac
 
 SECRET = 'secretkey'
 
