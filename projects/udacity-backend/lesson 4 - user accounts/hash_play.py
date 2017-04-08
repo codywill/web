@@ -1,7 +1,8 @@
 import hashlib
+import hmac
 
-def hash_str(s):
-    return hashlib.md5(s).hexdigest()
+#def hash_str(s):
+#    return hashlib.md5(s).hexdigest()
 
 # -----------------
 # User Instructions
@@ -22,4 +23,7 @@ def check_secure_val(h):
     if h == make_secure_val(n):
         return n
         
-print check_secure_val(make_secure_val("hey"))
+# Implement the hash_str function to use HMAC and our SECRET instead of md5
+SECRET = 'imsosecret'
+def hash_str(s):
+    return hmac.new(SECRET,s).hexdigest()

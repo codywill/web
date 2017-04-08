@@ -10,7 +10,7 @@ jinja_env = jinja2.Environment(loader = jinja2.FileSystemLoader(template_dir),
                                autoescape = True)
 
 def hash_str(s):
-    return hashlib.md5(s).hexdigest()
+    return hmac.new(SECRET,s).hexdigest()
 
 def make_secure_val(s):
     return "%s|%s" % (s, hash_str(s))
